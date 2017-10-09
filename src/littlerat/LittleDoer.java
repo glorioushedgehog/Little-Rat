@@ -29,7 +29,7 @@ public class LittleDoer implements Runnable{
      * Set this instance of LittleDoer's stringMap and text
      * @param text the text whose words will be replaced
      */
-    public LittleDoer(String text){
+    LittleDoer(String text){
         if( useBig ){
             this.stringMap = bigStringMap;
         }else{
@@ -65,19 +65,15 @@ public class LittleDoer implements Runnable{
 				 * often parts of words, such as "it's"
 				 */
                 String[] subWords = w.split("'");
-                String aNew = "";
+                StringBuilder aNew = new StringBuilder();
                 for( String sw : subWords ){
-                    if( stringMap.containsKey(sw) ){
-                        aNew += stringMap.get(sw);
-                    }else{
-                        aNew += sw;
-                    }
-                    aNew += "'";
+                    aNew.append(stringMap.getOrDefault(sw, sw));
+                    aNew.append("'");
                 }
                 if( aNew.length() > 0 ){
-                    aNew = aNew.substring(0, aNew.length() - 1);
+                    aNew = new StringBuilder(aNew.substring(0, aNew.length() - 1));
                 }
-                newWords[i] = copyCase(words[i], aNew);
+                newWords[i] = copyCase(words[i], aNew.toString());
             }else{
                 newWords[i] = words[i];
             }
@@ -114,8 +110,8 @@ public class LittleDoer implements Runnable{
      * @return the HashMap
      */
     @SuppressWarnings("unchecked")
-    static HashMap<String, String> getStringMap(String fileLoc){
-        HashMap<String, String> map = new HashMap<String, String>();
+    private static HashMap<String, String> getStringMap(String fileLoc){
+        HashMap<String, String> map = new HashMap<>();
         try{
             FileInputStream fis = new FileInputStream(fileLoc);
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -145,7 +141,7 @@ public class LittleDoer implements Runnable{
     /**
      * Switch between using words from commonPron or cmupron
      */
-    public static void switchMap(){
+    static void switchMap(){
         useBig = !useBig;
     }
 }

@@ -3,7 +3,7 @@ package littlerat;
  * Use global string alignment to determine the
  * phonetic differences between two arrays of phonemes.
  */
-public class Align {
+class Align {
     // Two arrays of phonemes
     private static String[] arr1 = null;
     private static String[] arr2 = null;
@@ -15,7 +15,7 @@ public class Align {
      * @param j the number of phonemes in ar2
      * @return the score
      */
-    public static int getScore(String[] ar1, String[] ar2, int i, int j){
+    static int getScore(String[] ar1, String[] ar2, int i, int j){
         arr1 = ar1;
         arr2 = ar2;
         return optimal(i, j);

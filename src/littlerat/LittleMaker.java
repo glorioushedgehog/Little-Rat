@@ -41,7 +41,7 @@ public class LittleMaker {
      * Word object for each line. The Word objects are stored
      * in sylMap according to their number of syllables
      */
-    static void readPron(){
+    private static void readPron(){
         for( int i = 1; i < maxSyls; i++ ){
             sylMap.put(i, new ArrayList<Word>());
         }
@@ -65,7 +65,7 @@ public class LittleMaker {
     /**
      * Convert sylMap into arrMap
      */
-    static void fillArrMap(){
+    private static void fillArrMap(){
         for( int i = 1; i < maxSyls; i++ ){
             int siz = sylMap.get(i).size();
             Word[] temp = new Word[siz];
@@ -79,7 +79,7 @@ public class LittleMaker {
      * Fill wordMap with all Word object mapped to the
      * word object of each word's most similar-sounding word
      */
-    static void fillWordMap(){
+    private static void fillWordMap(){
         for( int i = 1; i < maxSyls; i++ ){
             Word[] wordArr = arrMap.get(i);
             for( int j = 0; j < wordArr.length - 1; j++ ){
@@ -114,7 +114,7 @@ public class LittleMaker {
     /**
      * Save stringMap with serialization
      */
-    static void serializeWordMap(){
+    private static void serializeWordMap(){
         try{
             FileOutputStream fos = new FileOutputStream(serMap);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -130,7 +130,7 @@ public class LittleMaker {
      * Write a readable version of stringMap so that the output can
      * be inspected
      */
-    static void writeStringMap(){
+    private static void writeStringMap(){
         try{
             FileWriter writer = new FileWriter(mapText);
             Set<String> wors = stringMap.keySet();
@@ -149,7 +149,7 @@ public class LittleMaker {
     }
     /**
      * Define the proper files to use and track time spent
-     * @param args
+     * @param args unused
      */
     public static void main(String[] args){
         long start = System.currentTimeMillis();

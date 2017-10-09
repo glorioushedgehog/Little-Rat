@@ -5,14 +5,14 @@ import java.util.HashMap;
  * Return a number representing how similar two phonemes are.
  * The numbers are used to score two words by their phonetic differences.
  */
-public class Score {
+class Score {
     /*
      * This HashMap will store pairs of similar-sounding phonemes as arrays.
      * The integer values are not used.
      */
     private static HashMap<String[], Integer> closeMap = new HashMap<String[], Integer>();
     // The score for a missing or added phoneme
-    protected static final int gap = 3;
+    static final int gap = 3;
     // The score for replacing a phoneme with a similar-sounding phoneme
     private static final int close = 1;
     // The score for replacing a phoneme with a very different sounding phoneme
@@ -50,7 +50,7 @@ public class Score {
      * @param s2 another phoneme
      * @return the score for the two phonemes
      */
-    public static int score(String s1, String s2) {
+    static int score(String s1, String s2) {
         if( !mapBuilt ){
             buildMap();
         }

@@ -14,17 +14,17 @@ import java.util.HashMap;
  */
 public class CommonMaker {
     // This HashMap will be filled with all the words in common.txt (the integer values are not used)
-    static HashMap<String, Integer> coMap = new HashMap<String, Integer>();
+    private static HashMap<String, Integer> coMap = new HashMap<String, Integer>();
     // This ArrayList will be filled with all desired lines of cmupron.txt
-    static ArrayList<String> coLines = new ArrayList<String>();
+    private static ArrayList<String> coLines = new ArrayList<String>();
     // The directory and name of common
-    static final String common = "Texts/common.txt";
+    private static final String common = "Texts/common.txt";
     // The directory and name of cmupron
-    static final String cmupron = "Texts/cmupron.txt";
+    private static final String cmupron = "Texts/cmupron.txt";
     /**
      * Read common into coMap
      */
-    static void readCommon(){
+    private static void readCommon(){
         FileReader fr = null;
         try {
             fr = new FileReader(common);
@@ -42,7 +42,7 @@ public class CommonMaker {
     /**
      * Read through cmupron and decide which lines should be added to coLines
      */
-    static void readPron(){
+    private static void readPron(){
         FileReader fr = null;
         try {
             fr = new FileReader(cmupron);
@@ -62,7 +62,7 @@ public class CommonMaker {
     /**
      * Write all the strings in coLines to commonPron.txt
      */
-    static void writeCommon(){
+    private static void writeCommon(){
         try{
             FileWriter writer = new FileWriter("Texts/commonPron.txt");
             for( String s : coLines ){
@@ -77,7 +77,7 @@ public class CommonMaker {
     }
     /**
      * Call the methods
-     * @param args
+     * @param args unused
      */
     public static void main(String[] args) {
         readCommon();

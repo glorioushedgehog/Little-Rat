@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * Class for processing and storing data for each
  * individual word
  */
-public class Word {
+class Word {
     // the string of the word, all lower case
     private String word = "";
     /*
@@ -25,22 +25,22 @@ public class Word {
     // The difference score of this word and the most similar sounding word found so far
     private int diff = Integer.MAX_VALUE;
     // Getters
-    public int getDiff() {
+    int getDiff() {
         return this.diff;
     }
-    public String getWord() {
+    String getWord() {
         return word;
     }
-    public String[][] getConsts() {
+    private String[][] getConsts() {
         return consts;
     }
-    public int[] getNumConsts() {
+    private int[] getNumConsts() {
         return numConsts;
     }
-    public String[] getVows() {
+    private String[] getVows() {
         return vows;
     }
-    public int getSyls(){
+    int getSyls(){
         return syls;
     }
     /**
@@ -48,7 +48,7 @@ public class Word {
      * between another word
      * @param word2 the word that this word will be compared to
      */
-    public void setDiff(Word word2) {
+    void setDiff(Word word2) {
         int score = 0;
         for( int i = 0; i < this.syls + 1; i++ ){
             int num1 = this.numConsts[i];
@@ -72,7 +72,7 @@ public class Word {
      * @param w the word this word will be compared to
      * @return true if w is a form of this word, false if it is not
      */
-    public boolean diffWord(Word w){
+    boolean diffWord(Word w){
         return !this.formOf(w) && !w.formOf(this);
     }
     /**
@@ -81,7 +81,7 @@ public class Word {
      * @param w the word this word will be compared to
      * @return true if the word is w with a certain suffix added, false if it is not
      */
-    public boolean formOf(Word w){
+    private boolean formOf(Word w){
         int leng = this.word.length();
         if( this.word.endsWith("'s") || this.word.endsWith("s'") || this.word.endsWith("ed") ){
             return w.getWord().startsWith(this.word.substring(0, leng - 2));
@@ -95,7 +95,7 @@ public class Word {
      * Fill the word's fields according to a line of cmupron
      * @param cmuline the line from cmupron on which this word will be based
      */
-    public Word(String cmuline){
+    Word(String cmuline){
         String[] splitLine = cmuline.split(" ", 2);
         this.word = splitLine[0].trim().toLowerCase();
         String[] pron = splitLine[1].trim().split(" ");

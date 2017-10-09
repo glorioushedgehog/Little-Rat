@@ -2,15 +2,15 @@ package littlerat;
 /**
  * Start new word-replacement threads and interrupt old ones
  */
-public class JobManager {
+class JobManager {
     // This will be set to null whenever no job is being done
     private static Thread job = null;
     /**
      * Make a new job of replacing all the words in the given text
      * with the most similar-sounding words
-     * @param text
+     * @param text the text whose words will be replaced
      */
-    public static void add(String text){
+    static void add(String text){
         clear();
         Runnable newJob = new LittleDoer(text);
         job = new Thread(newJob);
@@ -19,7 +19,7 @@ public class JobManager {
     /**
      * Stop any jobs currently being done
      */
-    public static void clear() {
+    static void clear() {
         if( job != null ){
             job.interrupt();
             job = null;

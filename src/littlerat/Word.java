@@ -99,14 +99,14 @@ class Word {
         String[] splitLine = cmuline.split(" ", 2);
         this.word = splitLine[0].trim().toLowerCase();
         String[] pron = splitLine[1].trim().split(" ");
-        ArrayList<ArrayList<String>> tempConsts = new ArrayList<ArrayList<String>>();
-        ArrayList<String> tempVows = new ArrayList<String>();
-        ArrayList<String> tempTempConsts = new ArrayList<String>();
+        ArrayList<ArrayList<String>> tempConsts = new ArrayList<>();
+        ArrayList<String> tempVows = new ArrayList<>();
+        ArrayList<String> tempTempConsts = new ArrayList<>();
         for( String pho : pron ){
             if( pho.length() == 3 ){
                 tempVows.add(pho);
                 tempConsts.add(tempTempConsts);
-                tempTempConsts = new ArrayList<String>();
+                tempTempConsts = new ArrayList<>();
             }else{
                 tempTempConsts.add(pho);
             }

@@ -78,30 +78,30 @@ public class LittleDoer implements Runnable{
                 newWords[i] = words[i];
             }
         }
-        String newText = "";
+        StringBuilder newText = new StringBuilder();
         if( newWords.length > nonWords.length ){
             for( int i = 0; i < nonWords.length; i++ ){
                 if( Thread.interrupted() || interrupted ){
                     interrupted = true;
                     break;
                 }
-                newText += newWords[i];
-                newText += nonWords[i];
+                newText.append(newWords[i]);
+                newText.append(nonWords[i]);
             }
-            newText += newWords[words.length - 1];
+            newText.append(newWords[words.length - 1]);
         }else{
             for( int i = 0; i < newWords.length; i++ ){
                 if( Thread.interrupted() || interrupted ){
                     interrupted = true;
                     break;
                 }
-                newText += nonWords[i];
-                newText += newWords[i];
+                newText.append(nonWords[i]);
+                newText.append(newWords[i]);
             }
-            newText += nonWords[nonWords.length - 1];
+            newText.append(nonWords[nonWords.length - 1]);
         }
         if( !Thread.interrupted() && !interrupted  ){
-            LittleWindow.setNewText(newText);;
+            LittleWindow.setNewText(newText.toString());;
         }
     }
     /**

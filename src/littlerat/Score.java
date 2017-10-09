@@ -10,7 +10,7 @@ class Score {
      * This HashMap will store pairs of similar-sounding phonemes as arrays.
      * The integer values are not used.
      */
-    private static HashMap<String[], Integer> closeMap = new HashMap<String[], Integer>();
+    private static HashMap<String[], Integer> closeMap = new HashMap<>();
     // The score for a missing or added phoneme
     static final int gap = 3;
     // The score for replacing a phoneme with a similar-sounding phoneme

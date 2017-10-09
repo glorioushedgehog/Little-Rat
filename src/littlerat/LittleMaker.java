@@ -29,13 +29,13 @@ public class LittleMaker {
     // The directory and filename of the file to which the serialized map will be written
     private static String serMap;
     // Map that maps Word objects to the Word object of the most similar-sounding word
-    private static HashMap<Word, Word> wordMap = new HashMap<Word, Word>();
+    private static HashMap<Word, Word> wordMap = new HashMap<>();
     // Map that maps word string to the word string of the most similar-sounding word
-    private static HashMap<String, String> stringMap = new HashMap<String, String>();
+    private static HashMap<String, String> stringMap = new HashMap<>();
     // Map used to store Word objects in ArrayLists according to the number of syllables the words have
-    private static HashMap<Integer, ArrayList<Word>> sylMap = new HashMap<Integer, ArrayList<Word>>();
+    private static HashMap<Integer, ArrayList<Word>> sylMap = new HashMap<>();
     // The same map as sylMap, but uses Arrays instead of ArrayLists
-    private static HashMap<Integer, Word[]> arrMap = new HashMap<Integer, Word[]>();
+    private static HashMap<Integer, Word[]> arrMap = new HashMap<>();
     /**
      * Read all the lines of pronText and make a new
      * Word object for each line. The Word objects are stored
@@ -43,9 +43,9 @@ public class LittleMaker {
      */
     private static void readPron(){
         for( int i = 1; i < maxSyls; i++ ){
-            sylMap.put(i, new ArrayList<Word>());
+            sylMap.put(i, new ArrayList<>());
         }
-        FileReader fr = null;
+        FileReader fr;
         try {
             fr = new FileReader(pronText);
             BufferedReader br = new BufferedReader(fr);

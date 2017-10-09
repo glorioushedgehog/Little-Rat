@@ -14,9 +14,9 @@ import java.util.HashMap;
  */
 public class CommonMaker {
     // This HashMap will be filled with all the words in common.txt (the integer values are not used)
-    private static HashMap<String, Integer> coMap = new HashMap<String, Integer>();
+    private static HashMap<String, Integer> coMap = new HashMap<>();
     // This ArrayList will be filled with all desired lines of cmupron.txt
-    private static ArrayList<String> coLines = new ArrayList<String>();
+    private static ArrayList<String> coLines = new ArrayList<>();
     // The directory and name of common
     private static final String common = "Texts/common.txt";
     // The directory and name of cmupron
@@ -25,7 +25,7 @@ public class CommonMaker {
      * Read common into coMap
      */
     private static void readCommon(){
-        FileReader fr = null;
+        FileReader fr;
         try {
             fr = new FileReader(common);
             BufferedReader br = new BufferedReader(fr);
@@ -43,7 +43,7 @@ public class CommonMaker {
      * Read through cmupron and decide which lines should be added to coLines
      */
     private static void readPron(){
-        FileReader fr = null;
+        FileReader fr;
         try {
             fr = new FileReader(cmupron);
             BufferedReader br = new BufferedReader(fr);
